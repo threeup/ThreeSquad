@@ -1,0 +1,1317 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"de",
+				"destinationQueue"
+			],
+			[
+				"des",
+				"destination"
+			],
+			[
+				"sel",
+				"selected"
+			],
+			[
+				"dest",
+				"destinationIndex"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"UIW",
+				"UIWheelSelection"
+			],
+			[
+				"UIWh",
+				"UIWheelItem"
+			],
+			[
+				"but",
+				"selectedButtonPosition"
+			],
+			[
+				"sc",
+				"screenFactor"
+			],
+			[
+				"scre",
+				"screenSizeRef"
+			],
+			[
+				"screenS",
+				"screenSizeRef"
+			],
+			[
+				"ancho",
+				"anchorPos"
+			],
+			[
+				"button",
+				"buttonPositions"
+			],
+			[
+				"bu",
+				"buttonPositions"
+			],
+			[
+				"Gen",
+				"GeneralState"
+			],
+			[
+				"curr",
+				"currentHeight"
+			],
+			[
+				"cu",
+				"currentWidth"
+			],
+			[
+				"UI",
+				"UIWheelState"
+			],
+			[
+				"upd",
+				"UpdateBusy"
+			],
+			[
+				"Input",
+				"InputState"
+			],
+			[
+				"touch",
+				"touchCurrentPos"
+			],
+			[
+				"D",
+				"UpdateDelegate"
+			],
+			[
+				"Inp",
+				"InputType"
+			],
+			[
+				"finger",
+				"fingerCount"
+			],
+			[
+				"Upda",
+				"UpdateBusy"
+			],
+			[
+				"scree",
+				"screenSize"
+			],
+			[
+				"fine",
+				"fingerCount"
+			],
+			[
+				"piec",
+				"pieceName"
+			],
+			[
+				"render",
+				"renderArray"
+			],
+			[
+				"mObjR",
+				"mObjRenderList"
+			],
+			[
+				"rend",
+				"renderArray"
+			],
+			[
+				"sPro",
+				"sPrototypeShooter"
+			],
+			[
+				"sP",
+				"sPrototypeShifter"
+			],
+			[
+				"Tetr",
+				"TetrGame"
+			],
+			[
+				"leve",
+				"levelSelected"
+			],
+			[
+				"In",
+				"Instance"
+			],
+			[
+				"mSli",
+				"mSlidingExtras"
+			],
+			[
+				"IsMov",
+				"IsMovingVertical"
+			],
+			[
+				"mSl",
+				"mSlidingExtras"
+			],
+			[
+				"mLand",
+				"mLandedExtras"
+			],
+			[
+				"mE",
+				"mEntityList"
+			],
+			[
+				"mEx",
+				"mExtraCubes"
+			],
+			[
+				"IsM",
+				"IsMovingLateral"
+			],
+			[
+				"mGro",
+				"mGroupCount"
+			],
+			[
+				"Exe",
+				"ExecuteList"
+			],
+			[
+				"Ex",
+				"ExecuteMethod"
+			],
+			[
+				"LX",
+				"LXEntityFlags"
+			],
+			[
+				"LXC",
+				"LXCommandExecutor"
+			],
+			[
+				"mCo",
+				"mCommandType"
+			],
+			[
+				"mCom",
+				"mCommandList"
+			],
+			[
+				"mChu",
+				"mChunkList"
+			],
+			[
+				"mLa",
+				"mLastChunkIndex"
+			],
+			[
+				"sProt",
+				"sPrototypeChunk"
+			],
+			[
+				"delt",
+				"deltaTime"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "Assets/Code/FactoryUI.cs",
+			"settings":
+			{
+				"buffer_size": 581,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Code/FactoryEntity.cs",
+			"settings":
+			{
+				"buffer_size": 984,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Code/UIMgr.cs",
+			"settings":
+			{
+				"buffer_size": 1673,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 14 files for \"screen.wi\"\n\nI:\\w\\ThreeSquad\\Assets\\Code\\GoogleStart.cs:\n   33          GUI.skin.label.fontSize = (int)(FontSizeMult * Screen.height);\n   34  \n   35:         GUI.Label(new Rect(20, 20, Screen.width, Screen.height * 0.25f), mStatusText);\n   36  \n   37          if (mWaitingForAuth) {\n   ..\n   40  \n   41          string buttonLabel = Social.localUser.authenticated ? \"Sign Out\" : \"Authenticate\";\n   42:         Rect buttonRect = new Rect(0.25f * Screen.width, 0.25f * Screen.height,\n   43:                           0.5f * Screen.width, 0.5f * Screen.height);\n   44  \n   45          if (GUI.Button(buttonRect, buttonLabel)) {\n\nI:\\w\\ThreeSquad\\Assets\\Code\\InputMgr.cs:\n   53          touchStartPos = new Vector2[2];\n   54          touchCurrentPos = new Vector2[2];\n   55:         screenSize = new Vector2(Screen.width, Screen.height);\n   56          machine = new InputMachine();\n   57          machine.Initialize(this);\n\nI:\\w\\ThreeSquad\\Assets\\LeanTween\\LeanTweenExamples\\Scripts\\ExampleCSharp.cs:\n   38  \n   39  	void OnGUI(){\n   40: 		GUI.Label(new Rect(0.03f*Screen.width,0.03f*Screen.height,0.5f*Screen.width,0.3f*Screen.height), \"useEstimatedTime:\"+useEstimatedTime);\n   41  	}\n   42  	\n\n6 matches across 3 files\n\n\nSearching 14 files for \"AddUpdate\"\n\nI:\\w\\ThreeSquad\\Assets\\Code\\CameraMgr.cs:\n   43          machine.AddEnterListener(OnNotReady);\n   44          machine.AddEnterListener(OnReady);\n   45:         machine.AddUpdateListener(UpdateReady);\n   46          machine.AddEnterListener(OnBusy);\n   47:         machine.AddUpdateListener(UpdateBusy);\n   48          \n   49          machine.SetState(CameraState.BUSY);\n\nI:\\w\\ThreeSquad\\Assets\\Code\\InputMgr.cs:\n   58          machine.AddEnterListener(OnNotReady);\n   59          machine.AddEnterListener(OnReady);\n   60:         machine.AddUpdateListener(UpdateReady);\n   61          machine.AddEnterListener(OnActive);\n   62:         machine.AddUpdateListener(UpdateActive);\n   63          machine.AddEnterListener(OnBusy);\n   64:         machine.AddUpdateListener(UpdateBusy);\n   65  		machine.AddChangeListener(OnChange);\n   66          \n\nI:\\w\\ThreeSquad\\Assets\\Code\\UIWheel.cs:\n   42          machine.AddEnterListener(OnActive);\n   43          machine.AddEnterListener(OnBusy);\n   44:         machine.AddUpdate(UpdateBusy);\n   45          \n   46          buttonPositions = new List<Vector3>();\n\nI:\\w\\ThreeSquad\\Assets\\Code\\Common\\StateMachine.cs:\n  196  \n  197  \n  198: 	public void AddUpdateListener(BasicState.UpdateDelegate deleg)\n  199  	{\n  200  		string input = deleg.Method.Name;\n\n7 matches across 4 files\n",
+			"settings":
+			{
+				"buffer_size": 2596,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "Assets/Code/Common/StateMachine.cs.meta",
+			"settings":
+			{
+				"buffer_size": 178,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Code/UIWheel.cs",
+			"settings":
+			{
+				"buffer_size": 8685,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Code/Common/Utilities.cs",
+			"settings":
+			{
+				"buffer_size": 1057,
+				"line_ending": "Windows",
+				"name": "Utilities.cs"
+			}
+		},
+		{
+			"file": "Assets/LeanTween/LeanTweenExamples/Scripts/ExampleCSharp.cs",
+			"settings":
+			{
+				"buffer_size": 8180,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Code/InputMgr.cs",
+			"settings":
+			{
+				"buffer_size": 5320,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Code/GoogMgr.cs",
+			"settings":
+			{
+				"buffer_size": 2740,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Code/World.cs",
+			"settings":
+			{
+				"buffer_size": 2134,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Code/CameraMgr.cs",
+			"settings":
+			{
+				"buffer_size": 2686,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Code/GameMgr.cs",
+			"settings":
+			{
+				"buffer_size": 1710,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Code/Common/StateMachine.cs",
+			"settings":
+			{
+				"buffer_size": 4539,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/I/w/ThreeSquad/Assets/Code",
+		"/I/w/ThreeSquad/Assets/Code/Common"
+	],
+	"file_history":
+	[
+		"/I/w/ThreeSquad/Assets/Code/GameMgr.cs",
+		"/I/w/ThreeSquad/Assets/Code/Dbg.cs",
+		"/I/w/ThreeSquad/Assets/Code/CameraMgr.cs",
+		"/I/w/ThreeSquad/Assets/Code/InputMgr.cs",
+		"/I/w/ThreeSquad/Assets/Code/Maker.cs",
+		"/I/w/ThreeSquad/Assets/Code/GoogMgr.cs",
+		"/I/w/ThreeSquad/Assets/Code/Common/StateMachine.cs",
+		"/I/w/ThreeSquad/Assets/Code/FactoryEntity.cs",
+		"/I/w/kilowar/Assets/Scripts/Common/StateMachine.cs",
+		"/I/w/ThreeSquad/ProjectSettings/ProjectSettings.asset",
+		"/I/w/ThreeSquad/googandroid/ThreeSquad/AndroidManifest.xml",
+		"/I/w/Tetrified/Assets/Code/Game/TetrCube.cs",
+		"/I/w/Tetrified/Assets/Code/Game/TetrDirector.cs",
+		"/I/w/Tetrified/Assets/Code/Game/TetrGame.cs",
+		"/I/w/Tetrified/Assets/Code/ZUI/ZUIBtnHint.cs",
+		"/I/w/Tetrified/Assets/Code/Game/LXGrabber.cs",
+		"/I/w/Tetrified/Assets/Code/Game/LXGroup.cs",
+		"/I/w/Tetrified/Assets/Code/Game/PuzzleParams.cs",
+		"/I/w/Tetrified/Assets/Code/NGUI/Interaction/UIButton.cs",
+		"/I/w/Tetrified/Assets/Code/Game/GameParams.cs",
+		"/I/w/Tetrified/Design/GameParams.xml",
+		"/I/w/Tetrified/Assets/Code/Game/PieceParams.cs",
+		"/I/w/Tetrified/Assets/Code/Game/TetrGameData.cs",
+		"/I/w/Tetrified/Assets/Code/Game/GameGrid.cs",
+		"/I/w/Tetrified/Assets/Code/InGameUIName.cs",
+		"/I/w/Tetrified/Assets/Code/ZUI/ZUIBtnRestart.cs",
+		"/I/w/Tetrified/Assets/Code/NGUI/Internal/BetterList.cs",
+		"/I/w/Tetrified/Assets/Code/NGUI/Internal/BMFont.cs",
+		"/I/w/Tetrified/Assets/Code/LevelButtonClick.cs",
+		"/I/w/Tetrified/Assets/Code/ZUI/ZUIBtnSkip.cs",
+		"/I/w/Tetrified/Assets/Code/Game/LXLib/PlayerPrefsX.cs",
+		"/I/w/Tetrified/Assets/Code/SpecialRotate.cs",
+		"/I/w/Tetrified/Assets/Code/Game/LXChunk.cs",
+		"/I/w/Tetrified/Assets/Code/DocumentButton.cs",
+		"/I/w/Tetrified/Assets/Code/Game/TetrBridge.cs",
+		"/I/w/Tetrified/Assets/Code/NGUI/Interaction/UIButtonColor.cs",
+		"/I/w/Tetrified/Assets/Code/Game/PuzzleMap.cs",
+		"/I/w/Tetrified/Assets/Code/NGUI/Interaction/UIButtonPlayAnimation.cs",
+		"/I/w/Tetrified/Assets/Code/tetrifiedcode.sublime-project",
+		"/I/w/Tetrified/Assets/Code/SpecialBounce.cs",
+		"/I/w/Tetrified/Assets/Code/SpeakingText.cs",
+		"/I/w/Tetrified/Assets/Code/NGUI/Internal/SpringPanel.cs",
+		"/I/w/Tetrified/Assets/Code/ScreenManager.cs",
+		"/I/w/Tetrified/Assets/Code/NGUI/Interaction/UIButtonScale.cs",
+		"/I/w/Tetrified/Assets/Code/Game/LXFactory.cs",
+		"/I/w/Tetrified/Assets/Code/NGUI/Interaction/UIImageButton.cs",
+		"/I/w/Tetrified/Assets/Code/NGUI/Editor/UIFontInspector.cs",
+		"/I/w/Tetrified/Assets/Code/NGUI/Editor/UISettings.cs",
+		"/I/w/Tetrified/Assets/Code/Game/TetrInventory.cs",
+		"/I/w/Tetrified/Assets/Code/Game/ExtraTypes.cs",
+		"/I/w/Tetrified/Assets/Code/Game/CameraParams.cs",
+		"/I/w/Tetrified/Assets/Code/LevelSelectPageManager.cs",
+		"/I/w/Tetrified/Assets/Code/Game/LXGroupList.cs",
+		"/I/w/Tetrified/Assets/Code/CRT.cs",
+		"/I/w/Tetrified/Assets/Code/Game/LXLib/BasicSingleton.cs",
+		"/C/g/Steam/steamapps/common/Dark Souls Prepare to Die Edition/DATA/DSfix.ini",
+		"/C/g/Steam/steamapps/common/Dark Souls Prepare to Die Edition/DATA/DSfixKeys.ini",
+		"/I/w/Tetrified/Assets/Code/ClickWorldToLevel.cs",
+		"/I/w/Tetrified/Assets/Code/Game/LXLib/LXCommand.cs",
+		"/I/w/Tetrified/Assets/Code/ZUI/ZUILevelPanel.cs",
+		"/I/w/Tetrified/Assets/Code/Game/TetrManager.cs",
+		"/I/w/Tetrified/Assets/Code/DrawManager.cs",
+		"/I/w/threefish/projectgreen/Assets/Code/Common/BasicSingleton.cs",
+		"/I/w/Tetrified/Assets/Code/Game/LXEntity.cs",
+		"/I/w/Tetrified/Design/PieceParams.xml",
+		"/I/w/Tetrified/Assets/Code/Game/LXLib/LXCommandManager.cs",
+		"/I/w/Tetrified/Assets/Code/Game/LXLib/LXCommandExecutor.cs",
+		"/I/w/Tetrified/Assets/Code/Game/TetrGameState.cs",
+		"/I/w/Tetrified/Assets/Code/Game/LXComplex.cs",
+		"/I/w/Tetrified/Assets/Resources/GameParams.asset",
+		"/I/w/Tetrified/Assets/Code/Game/LXRigidChunk.cs",
+		"/I/w/Tetrified/Assets/Code/Game/LXManager.cs",
+		"/I/w/Tetrified/Assets/Code/UIGame/ZUIBtnSkip.cs",
+		"/I/w/Tetrified/Assets/Code/UIGame/ZUIFrontEndLauncher.cs",
+		"/I/w/Tetrified/Assets/Code/UIGame/ZUIBtnRestart.cs",
+		"/I/w/Tetrified/Assets/Code/Game/UI/FrontEndLauncher.cs",
+		"/I/w/Tetrified/Assets/Code/Game/UI/BtnRestart.cs",
+		"/I/w/Tetrified/Assets/Code/Game/UI/BtnSkip.cs",
+		"/I/w/Tetrified/Assets/Code/Game/UI/TestListener.cs",
+		"/I/w/Tetrified/Assets/Code/tetrifiedcode.sublime-workspace"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"*.cs",
+			"I:\\w\\Tetrified\\Assets\\Code\\Game",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"centerpos",
+			"redr",
+			"redraw",
+			"locktimer",
+			"FinishMoving",
+			"moveto",
+			"select(",
+			"Select",
+			"finishmo",
+			"select",
+			"AddUpdate",
+			"screen.wi",
+			"easeout",
+			"move",
+			"UpdateBusy",
+			"ignoreinput",
+			"start",
+			"touchpos",
+			"pend",
+			"GoogManager",
+			"bigLines",
+			"gettext",
+			"debugoverl",
+			"linestocl",
+			"linestoclk",
+			"ShowHint",
+			"up,",
+			"UP,",
+			"rotate",
+			"mRotY",
+			"rotate",
+			"rot90",
+			"FindPiece",
+			"pieceparams",
+			"GetFloor",
+			"floor",
+			"getfloor",
+			"hint",
+			"mshadowtime",
+			"DrawStyleList",
+			"whitesolid",
+			"UpdateColor",
+			"floor",
+			"mRotY",
+			"rotate",
+			"showhint",
+			"btnskip",
+			"restart",
+			"btnrest",
+			"setena",
+			"PuzzleParams",
+			"CreateFromXml",
+			"mFalling",
+			"falling",
+			"IsLocked",
+			"event",
+			"mLanded",
+			"landed",
+			"Regrid",
+			"AddBond",
+			"bond",
+			"shifter",
+			"mmodifier",
+			"slidearrow",
+			"loading level",
+			"easy1",
+			"PieceBoxType",
+			"modifyType",
+			"AddComplexToGroup",
+			"complextype",
+			".standard",
+			"pieceboxtype",
+			"type.stand",
+			"objren",
+			"mObjRender",
+			"addcomplextog",
+			"MakeComplex",
+			"sPrototypeComplex",
+			"tetrcube",
+			"mShadowColor",
+			"shadow",
+			"mfloor",
+			"floor",
+			"floorproto",
+			"shadow",
+			"mNatural",
+			"shadowcolor",
+			"debug.log",
+			"occupied",
+			"alpha",
+			"26",
+			"flatfloor",
+			"cameraparams",
+			"camera",
+			"worldcompleted",
+			"levelNames",
+			"audio",
+			"fadeoutmu",
+			"levelnames",
+			"mdire",
+			"mManager",
+			"direct",
+			"inventory",
+			"inventory4",
+			"inventory",
+			"inventory4",
+			"inventory",
+			"mgame",
+			"grabber",
+			"update",
+			"mgrabber",
+			"TetrManager",
+			"NewLevelProcess",
+			"setlevelcomplete",
+			"NewLevelProcess",
+			"setlevelcompl",
+			"TetrGameData",
+			"setboolarray",
+			"levelUnlocked",
+			"getint",
+			"createLevels",
+			"levelUnlockedArray",
+			"createLevels",
+			"SelectLevel",
+			"TetrGameState",
+			"nextlevel",
+			"SelectLevel",
+			"nextlevel"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"GoogMgr",
+			"permaLines",
+			"PieceCubeType",
+			"cubeType",
+			"mDirector",
+			"TetrDirector",
+			"TetrBridge"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 5,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "Assets/Code/FactoryUI.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 581,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								581,
+								581
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Assets/Code/FactoryEntity.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 984,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								551,
+								551
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Assets/Code/UIMgr.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1673,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1673,
+								1673
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 406.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2596,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										208,
+										217
+									],
+									[
+										468,
+										477
+									],
+									[
+										545,
+										554
+									],
+									[
+										826,
+										835
+									],
+									[
+										1084,
+										1093
+									],
+									[
+										1122,
+										1131
+									],
+									[
+										1446,
+										1455
+									],
+									[
+										1550,
+										1559
+									],
+									[
+										1816,
+										1825
+									],
+									[
+										1922,
+										1931
+									],
+									[
+										2027,
+										2036
+									],
+									[
+										2284,
+										2293
+									],
+									[
+										2466,
+										2475
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								1242,
+								1242
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 2,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 476.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "Assets/Code/Common/StateMachine.cs.meta",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 178,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "Assets/Code/UIWheel.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8685,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4663,
+								4663
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1966.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "Assets/Code/Common/Utilities.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1057,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								735,
+								735
+							]
+						],
+						"settings":
+						{
+							"auto_name": "Utilities.cs",
+							"syntax": "Packages/C#/C#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "Assets/LeanTween/LeanTweenExamples/Scripts/ExampleCSharp.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8180,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4289,
+								4300
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 105.0,
+						"translation.y": 865.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "Assets/Code/InputMgr.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5320,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3069,
+								3069
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1417.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "Assets/Code/GoogMgr.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2740,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								233,
+								233
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "Assets/Code/World.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2134,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1403,
+								1403
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 504.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "Assets/Code/CameraMgr.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2686,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2686,
+								2686
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1344.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "Assets/Code/GameMgr.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1710,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1599,
+								1599
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 798.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "Assets/Code/Common/StateMachine.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4539,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								162,
+								176
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "threesquadcode.sublime-project",
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"uim",
+				"UIMgr.cs"
+			],
+			[
+				"fac",
+				"FactoryEntity.cs"
+			],
+			[
+				"puzzp",
+				"Game\\PuzzleParams.cs"
+			],
+			[
+				"gamepa",
+				"Game\\GameParams.cs"
+			],
+			[
+				"btn",
+				"ZUI\\ZUIBtnHint.cs"
+			],
+			[
+				"hint",
+				"ZUI\\ZUIBtnHint.cs"
+			],
+			[
+				"inv",
+				"Game\\TetrInventory.cs"
+			],
+			[
+				"pu",
+				"Game\\PuzzleParams.cs"
+			],
+			[
+				"dir",
+				"Game\\TetrDirector.cs"
+			],
+			[
+				"tetrg",
+				"Game\\TetrGame.cs"
+			],
+			[
+				"zuib",
+				"ZUI\\ZUIBtnRestart.cs"
+			],
+			[
+				"puzzlep",
+				"Game\\PuzzleParams.cs"
+			],
+			[
+				"param",
+				"Game\\GameParams.cs"
+			],
+			[
+				"specialro",
+				"SpecialRotate.cs"
+			],
+			[
+				"uibuttonc",
+				"NGUI\\Interaction\\UIButtonColor.cs"
+			],
+			[
+				"uibuttonsc",
+				"NGUI\\Interaction\\UIButtonScale.cs"
+			],
+			[
+				"uibu",
+				"NGUI\\Interaction\\UIButton.cs"
+			],
+			[
+				"uibut",
+				"NGUI\\Interaction\\UIButtonColor.cs"
+			],
+			[
+				"tetrbr",
+				"Game\\TetrBridge.cs"
+			],
+			[
+				"lxchu",
+				"Game\\LXChunk.cs"
+			],
+			[
+				"fact",
+				"Game\\LXFactory.cs"
+			],
+			[
+				"tetrb",
+				"Game\\TetrBridge.cs"
+			],
+			[
+				"tetrc",
+				"Game\\TetrCube.cs"
+			],
+			[
+				"lxe",
+				"Game\\LXEntity.cs"
+			],
+			[
+				"ingam",
+				"InGameUIName.cs"
+			],
+			[
+				"lxgr",
+				"Game\\LXGrabber.cs"
+			],
+			[
+				"tetrgam",
+				"Game\\TetrGame.cs"
+			],
+			[
+				"tetrm",
+				"Game\\TetrManager.cs"
+			],
+			[
+				"ing",
+				"InGameUIName.cs"
+			],
+			[
+				"pl",
+				"Game\\LXLib\\PlayerPrefsX.cs"
+			],
+			[
+				"playerp",
+				"Game\\LXLib\\PlayerPrefsX.cs"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"I:\\w\\OneArrow\\Assets\\TauFactory.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 384.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
