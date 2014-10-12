@@ -8,6 +8,7 @@ using System.Collections.Generic;
 public struct BlockProperties
 {
     public string name;
+    public int val;
     public Material mat;
     public float mass;
     public float radius;

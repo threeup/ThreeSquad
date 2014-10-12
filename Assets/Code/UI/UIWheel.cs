@@ -3,90 +3,6 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-
-public class UIWheelSelection : MonoBehaviour {
-    public GameObject go;
-    public Button button;
-    public int index;
-    
-    public UIWheelSelection next;
-    public UIWheelSelection prev;
-    public Vector2 position;
-    
-    public bool isSelected = false;
-    public bool isMoving = false;
-    
-    public Queue<Vector3> destinationQueue;
-    public Vector2 destinationPosition;
-    public int destinationIndex;
-
-    public float tweenDuration = 0.0f;
-
-    public void Init(GameObject go, int index)
-    {
-        this.go = go;
-        this.button = go.GetComponent<Button>() as Button;
-        this.index = index;
-        Vector3 pos = go.transform.position;
-        this.position = new Vector2(pos.x, pos.y);
-        this.destinationPosition = this.position;
-        destinationQueue = new Queue<Vector3>();
-    }
-
-    public void Redraw()
-    {
-        Vector3 pos = go.transform.position;
-        this.position = new Vector2(pos.x, pos.y);
-        this.destinationPosition = this.position;
-    }
-
-    public void SetPrev(UIWheelSelection selection)
-    {
-        this.prev = selection;
-        selection.next = this;
-    }
-
-    public void MoveTo(UIWheelSelection other, float tweenDuration)
-    {
-        this.tweenDuration = tweenDuration;
-        Vector3 destination = new Vector3(other.position.x, other.position.y, other.index);
-        destinationQueue.Enqueue(destination);
-        CheckQueue();
-    }
-
-    public void CheckQueue()
-    {
-        if (isMoving || destinationQueue.Count == 0)
-        {
-            return;
-        }
-        Vector3 destination = destinationQueue.Dequeue();
-        destinationPosition.x = destination.x;
-        destinationPosition.y = destination.y;
-        destinationIndex = (int)destination.z;
-        LeanTween.move(go, destinationPosition, tweenDuration).setEase(LeanTweenType.easeInOutQuad);
-        isMoving = true;
-    }
-
-    public void FinishMoving()
-    {
-        position = destinationPosition;
-        index = destinationIndex;
-        isMoving = false;
-        CheckQueue();
-    }
-
-    public UIWheelSelection GetNextOrPrev(bool isNext)
-    {
-        return isNext ? next: prev;
-    }
-
-    public void SetSelected(bool val)
-    {
-        isSelected = val;
-    }
-}
-
 public class UIWheel : MonoBehaviour {
 
     public static UIWheel Instance;
@@ -94,6 +10,7 @@ public class UIWheel : MonoBehaviour {
 
     public GameObject container;
     public List<GameObject> buttons;
+    public List<UIProperties> contents;
     public List<UIWheelSelection> selections;
     public UIWheelSelection selected;
 
@@ -120,6 +37,7 @@ public class UIWheel : MonoBehaviour {
             Debug.LogError("UIWheel Already exists");
         }
         Instance = this;
+        contents = new List<UIProperties>();
     }
 
 
@@ -132,6 +50,7 @@ public class UIWheel : MonoBehaviour {
         machine.AddEnterListener(OnActive);
         machine.AddEnterListener(OnBusy);
         machine.AddUpdateListener(UpdateBusy);
+
         
 
 
@@ -139,7 +58,7 @@ public class UIWheel : MonoBehaviour {
         for(int i=0; i< buttons.Count; ++i)
         {
             Utilities.ApplyScale(buttons[i], lastScreenFactor);
-            UIWheelSelection selection = buttons[i].AddComponent<UIWheelSelection>();
+            UIWheelSelection selection = buttons[i].GetComponent<UIWheelSelection>();
             selection.Init(buttons[i], i);
             selections.Add(selection);
             if (i>0)
@@ -333,6 +252,10 @@ public class UIWheel : MonoBehaviour {
     }
 
 
+    public bool IsReady()
+    {
+        return machine.IsState(GeneralState.READY);
+    }
     public bool IsBusy()
     {
         return machine.IsState(GeneralState.BUSY);
@@ -341,5 +264,31 @@ public class UIWheel : MonoBehaviour {
     public bool IsConsumeInput()
     {
         return consumeInput;
+    }
+
+    public void SetContents(List<UIProperties> uiprops)
+    {
+        contents.Clear();
+        contents.AddRange(uiprops);
+        RefreshContents();
+    }
+
+    public void RefreshContents()
+    {
+        if (isInit)
+        {
+            for(int i=0; i<selections.Count; ++i)
+            {
+                if (i<contents.Count)
+                {
+                    selections[i].SetUIProp(contents[i]);
+                }
+            }
+        }
+    }
+
+    public int GetSelectedUID()
+    {
+        return selected.prop.uid;
     }
 }

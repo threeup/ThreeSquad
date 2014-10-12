@@ -177,14 +177,15 @@ public class InputMgr : MonoBehaviour {
 
     private void CheckFingerZone()
     {
-        if (touchCurrentPos[0].y < 0.1)
+        Vector2 normalizedTouch = Norm(touchCurrentPos[0]);
+        if (normalizedTouch.x < 0.2)
         {
             fingerZone = InputType.SELECT;
         }
-        else if (touchStartPos[0].x > 0.4 && 
-            touchStartPos[0].x < 0.6 && 
-            touchStartPos[0].y > 0.4 && 
-            touchStartPos[0].y < 0.6)
+        else if (normalizedTouch.x > 0.4 && 
+            normalizedTouch.x < 0.6 && 
+            normalizedTouch.y > 0.4 && 
+            normalizedTouch.y < 0.6)
         {
             fingerZone = InputType.PLACE;
         }

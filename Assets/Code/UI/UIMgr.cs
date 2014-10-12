@@ -2,6 +2,21 @@
 using System.Collections;
 using UnityEngine.SocialPlatforms;
 
+[System.Serializable]
+public struct UIProperties
+{
+    public string text;
+    public int val;
+    public int uid;
+    //public Material mat;
+
+    public UIProperties(string text, int val)
+    {
+        this.text = text;
+        this.val = val;
+        this.uid = -1;
+    }
+}
 
 public class UIMgr : MonoBehaviour {
 

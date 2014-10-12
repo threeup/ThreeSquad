@@ -112,7 +112,7 @@ public class StateMachine<T> where T : struct
 
 	public bool IsState(T tValue)
 	{
-		return currentState.enumValue.Equals(tValue);
+		return isInitialized && currentState.enumValue.Equals(tValue);
 	}
 
 	public bool? SetState(T type, bool forced = false)

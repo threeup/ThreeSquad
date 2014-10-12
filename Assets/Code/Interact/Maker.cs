@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.SocialPlatforms;
+using System.Collections.Generic;
+
 
 public enum MakerState
 {
@@ -11,14 +12,32 @@ public enum MakerState
     BUSY,
 }
 
-public enum MakerType
+public enum MakerMode
+{
+    BLOCK,
+    COMMAND,
+}
+public enum BlockType
 {
     CURSOR,
+    SPAWN,
     ROCK,
     WOOD,
     PAPER,
 }
 
+public enum CommandType
+{
+    SHOOT,
+    WAIT,
+    FORWARD,
+    ROTATELEFT,
+    ROTATERIGHT,
+    STRAFELEFT,
+    STRAFERIGHT,
+}
+
+[System.Serializable]
 public class MakerMachine : StateMachine<MakerState>
 {
 }
@@ -28,7 +47,17 @@ public class Maker : MonoBehaviour {
     public static Maker Instance;
     public MakerMachine machine;
 
-    public MakerType mtype;
+    public bool isBlock = true;
+
+    public MakerMode mode;
+    public BlockType blockType;
+    public CommandType commandType;
+
+    public UIWheel wheel;
+    private bool wheelDirty;
+    private List<UIProperties> uiprops;
+
+    public User user;
 
 
     void Start()
@@ -38,6 +67,7 @@ public class Maker : MonoBehaviour {
             Debug.LogError("Maker Already exists");
         }
         Instance = this;
+        uiprops = new List<UIProperties>();
     }
 
 
@@ -52,6 +82,7 @@ public class Maker : MonoBehaviour {
         machine.AddEnterListener(OnBusy);
 		machine.AddChangeListener(OnChange);
         
+        wheelDirty = true;
         machine.SetState(MakerState.READY);
     }
     
@@ -88,17 +119,56 @@ public class Maker : MonoBehaviour {
 
     public void SelectType(int typ)
     {
-        mtype = (MakerType)typ;
+        switch(mode)
+        {
+            case MakerMode.BLOCK:
+                blockType = (BlockType)typ;
+                break;
+            case MakerMode.COMMAND:
+                commandType = (CommandType)typ;
+                break;
+        }
     }
 
     public void Place(Vector2 pos)
     {
-
+        user.RemoveBlockInventory(wheel.GetSelectedUID());
     }
 
 
+    public bool IsReady()
+    {
+        return machine.IsState(MakerState.READY);
+    }
     public bool IsBusy()
     {
         return machine.IsState(MakerState.BUSY);
+    }
+
+    public void PopulateWheel()
+    {
+        uiprops.Clear();
+        if (user == null)
+        {
+            user = UserMgr.Instance.users[0];
+        }
+        switch(mode)
+        {
+            case MakerMode.BLOCK:
+                uiprops.AddRange(user.GetBlockUI());
+                break;
+            case MakerMode.COMMAND:
+                uiprops.AddRange(user.GetCommandUI());
+                break;
+        }
+        wheel.SetContents(uiprops);
+    }
+
+    public void Update()
+    {
+        if (wheelDirty && IsReady() && wheel.IsReady())
+        {
+            PopulateWheel();
+        }
     }
 }

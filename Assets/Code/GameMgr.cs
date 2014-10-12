@@ -13,6 +13,7 @@ public class GameMgr : MonoBehaviour {
 
     public GoogMgr googMgr;
     public Dbg dbg; //wiredup
+    public UserMgr userMgr; //wiredup
     public InputMgr inputMgr; //wiredup
     public CameraMgr cameraMgr; //wiredup
     public GridLineMgr gridLineMgr; //wiredup
@@ -30,6 +31,7 @@ public class GameMgr : MonoBehaviour {
 	{
 		inits = new List<InitDelegate>();
 		inits.Add(InitDebug);
+        inits.Add(InitUser);
         inits.Add(InitWorld);
 		inits.Add(InitMaker);
 		inits.Add(InitCamera);
@@ -91,6 +93,11 @@ public class GameMgr : MonoBehaviour {
     public void InitGridLine()
     {
         gridLineMgr.Initialize();
+    }
+
+    public void InitUser()
+    {
+        userMgr.Initialize();
     }
 
     public void InitWorld()
