@@ -12,7 +12,7 @@ public enum InputState
 
 public enum InputType
 {
-    SELECT,
+    UIMGR,
     CAMERA,
     PLACE,
 }
@@ -27,6 +27,9 @@ public class InputMgr : MonoBehaviour {
     public static InputMgr Instance;
     public InputMachine machine;
 
+    public CameraMgr cameraMgr;
+    public UIMgr uiMgr;
+    public Maker maker;
     public InputType fingerZone;
 
     private Vector2[] touchCurrentPos;
@@ -64,6 +67,9 @@ public class InputMgr : MonoBehaviour {
         machine.AddUpdateListener(UpdateBusy);
 		machine.AddChangeListener(OnChange);
         
+        uiMgr = UIMgr.Instance;
+        cameraMgr = CameraMgr.Instance;
+        maker = Maker.Instance;
         machine.SetState(InputState.READY);
 
         isInit = true;
@@ -71,7 +77,7 @@ public class InputMgr : MonoBehaviour {
     
 	public void OnChange(int val	)
 	{
-		Dbg.Instance.SetLabel(2, "Inp "+((InputState)machine.GetActiveState()).ToString());
+		
 	}
 
     public void OnNotReady(object owner)
@@ -142,34 +148,29 @@ public class InputMgr : MonoBehaviour {
         {
             CheckFingerZone();
         }
+        maker.UpdateInput(machine.State);
         machine.MachineUpdate(Time.deltaTime);
     }
 
     void UpdateActive(float deltaTime)
     {
-        if (fingerCount > 0)
+        if (fingerCount == 0)
         {
-            
-        }
-        else
-        {
-            //Debug.Log("User has " + fingerCount + " finger(s) touching the screen"+touchCurrentPos[0]);
             FinishActive();
         }
     }
 
     void UpdateReady(float deltaTime)
     {
-         if (fingerCount > 0)
+        if (fingerCount > 0)
         {
-            //Debug.Log("User has " + fingerCount + " finger(s) touching the screen"+touchCurrentPos[0]);
             machine.SetState(InputState.ACTIVE);
         }
     }
 
     void UpdateBusy(float deltaTime)
     {
-        if (!Maker.Instance.IsBusy() && !CameraMgr.Instance.IsBusy())
+        if (!maker.IsBusy() && !cameraMgr.IsBusy())
         {
             machine.SetState(InputState.READY);
         }
@@ -177,22 +178,27 @@ public class InputMgr : MonoBehaviour {
 
     private void CheckFingerZone()
     {
-        Vector2 normalizedTouch = Norm(touchCurrentPos[0]);
-        if (normalizedTouch.x < 0.2)
+
+        if (uiMgr.InBounds(touchCurrentPos[0]))
         {
-            fingerZone = InputType.SELECT;
-        }
-        else if (normalizedTouch.x > 0.4 && 
-            normalizedTouch.x < 0.6 && 
-            normalizedTouch.y > 0.4 && 
-            normalizedTouch.y < 0.6)
-        {
-            fingerZone = InputType.PLACE;
+            fingerZone = InputType.UIMGR;
         }
         else
         {
-            fingerZone = InputType.CAMERA;    
+            Vector2 normalizedTouch = Norm(touchCurrentPos[0]);
+            if (normalizedTouch.x > 0.33 && 
+                normalizedTouch.x < 0.66 && 
+                normalizedTouch.y > 0.33 && 
+                normalizedTouch.y < 0.66)
+            {
+                fingerZone = InputType.PLACE;
+            }
+            else
+            {
+                fingerZone = InputType.CAMERA;    
+            }
         }
+        Dbg.Instance.SetLabel(2, "Inp "+((InputType)fingerZone).ToString());
     }
 
     private void FinishActive()
@@ -201,14 +207,14 @@ public class InputMgr : MonoBehaviour {
         Vector2 start = Norm(touchStartPos[0]);
         switch(fingerZone)
         {
-            case InputType.SELECT:
-                Maker.Instance.SelectType((int)Mathf.Round(current.x / 0.33f));
+            case InputType.UIMGR:
+                uiMgr.HandleClick(touchCurrentPos[0]);
                 break;
             case InputType.PLACE:
-                Maker.Instance.Place(current);
+                maker.Click(current);
                 break;
             case InputType.CAMERA:
-                CameraMgr.Instance.Move(current-start);
+                cameraMgr.Move(current-start);
                 break;
         }
         machine.SetState(InputState.BUSY);
@@ -229,5 +235,7 @@ public class InputMgr : MonoBehaviour {
     {
         return touchCurrentPos[0];
     }
+
+
 
 }

@@ -53,17 +53,20 @@ public class User : MonoBehaviour
 
     public void FillDefault()
     {
-        AddBlockInventory(FactoryEntity.Instance.blockProperties[0]);
-        AddBlockInventory(FactoryEntity.Instance.blockProperties[0]);
-        AddBlockInventory(FactoryEntity.Instance.blockProperties[1]);
-        AddBlockInventory(FactoryEntity.Instance.blockProperties[1]);
-        AddBlockInventory(FactoryEntity.Instance.blockProperties[2]);
-        AddBlockInventory(FactoryEntity.Instance.blockProperties[3]);
+        Vars vars = Vars.Instance;
+        AddBlockInventory(vars.blockDict[BlockType.ROCK]);
+        AddBlockInventory(vars.blockDict[BlockType.WOOD]);
+        AddBlockInventory(vars.blockDict[BlockType.WOOD]);
+        AddBlockInventory(vars.blockDict[BlockType.PAPER]);
+        AddBlockInventory(vars.blockDict[BlockType.PAPER]);
+        AddBlockInventory(vars.blockDict[BlockType.SPAWN]);
+        AddBlockInventory(vars.blockDict[BlockType.SPAWN]);
+        
     }
 
     public void AddBlockInventory(BlockProperties blockprop)
     {
-        UIProperties uiprop = new UIProperties(blockprop.name, blockprop.val);
+        UIProperties uiprop = new UIProperties(blockprop.name, (int)blockprop.type);
         BlockContent content = new BlockContent(uiprop, blockprop);
         blockInventory.Add(content);
     }
@@ -76,6 +79,7 @@ public class User : MonoBehaviour
             {
                 blockInventory.RemoveAt(i);
                 blockDirty = true;
+                Debug.Log("remove"+i);
                 break;
             }
         }
@@ -90,6 +94,7 @@ public class User : MonoBehaviour
             {
                 blockUI.Add(blockInventory[i].uiprop);
             }
+            blockDirty = false;
         }
         return blockUI;
     }
@@ -102,6 +107,7 @@ public class User : MonoBehaviour
             commandUI.Add(new UIProperties("SHOOT", 0));
             commandUI.Add(new UIProperties("MOVE", 1));
             commandUI.Add(new UIProperties("WAIT", 2));
+            commandDirty = false;
         }
         return commandUI;
     }

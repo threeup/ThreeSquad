@@ -46,8 +46,8 @@ public class GridLineMgr : MonoBehaviour
     public void AfterMove(Vector2 destination)
     {
 
-        float centerX = Mathf.Round(destination.x);
-        float centerY = Mathf.Round(destination.y);
+        float centerX = Mathf.Round(destination.x/5f)*5f;
+        float centerY = Mathf.Round(destination.y/5f)*5f;
         for(int i=lines.Count-1; i>=0; --i)
         {
             lines[i].SetOffset(centerX, centerY);

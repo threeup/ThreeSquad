@@ -9,7 +9,6 @@ public class FactoryEntity : MonoBehaviour {
     public Entity floorPrefab;
     public Queue<Entity> floorPool;
 
-    public BlockProperties[] blockProperties;
     public Entity blockPrefab;
     public Queue<Entity> blockPool;
  
@@ -22,6 +21,9 @@ public class FactoryEntity : MonoBehaviour {
     public GameObject gridLinePrefab;
     public Queue<GameObject> gridLinePool;
     
+    public Shader entityShaderOpaque;
+    public Shader entityShaderTrnsp;
+
     void Start()
     {
         if (Instance != null)

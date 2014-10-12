@@ -4,27 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-[System.Serializable]
-public struct BlockProperties
-{
-    public string name;
-    public int val;
-    public Material mat;
-    public float mass;
-    public float radius;
-}
-
-
-[System.Serializable]
-public struct ProjectileProperties
-{
-    public string name;
-    public Material mat;
-    public float mass;
-    public float radius;
-    public Vector2 vel;
-}
-
 public class Entity : MonoBehaviour
 {
     public GameObject go;
@@ -52,6 +31,18 @@ public class Entity : MonoBehaviour
     public void SetMaterial(Material mat)
     {
         entityRenderer.material = mat;
+    }
+
+    public void SetTransparent(bool trnsp)
+    {
+        entityRenderer.material.shader = trnsp ? FactoryEntity.Instance.entityShaderTrnsp : FactoryEntity.Instance.entityShaderOpaque;
+    }
+
+    public void SetAlpha(float alpha)
+    {
+        Color matColor = entityRenderer.material.color;
+        matColor.a = alpha;
+        entityRenderer.material.color = matColor;   
     }
 
     public void SetPhysics(ProjectileProperties prop)

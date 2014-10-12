@@ -6,14 +6,14 @@ using UnityEngine.SocialPlatforms;
 public struct UIProperties
 {
     public string text;
-    public int val;
+    public int typeval;
     public int uid;
     //public Material mat;
 
-    public UIProperties(string text, int val)
+    public UIProperties(string text, int typeval)
     {
         this.text = text;
-        this.val = val;
+        this.typeval = typeval;
         this.uid = -1;
     }
 }
@@ -96,5 +96,15 @@ public class UIMgr : MonoBehaviour {
     public bool IsConsumeInput()
     {
         return consumeInput || uiWheel.IsConsumeInput();
+    }
+
+    public bool InBounds(Vector2 pos)
+    {
+        return uiWheel.InBounds(pos);
+    }
+
+    public bool HandleClick(Vector2 pos)
+    {
+        return true;
     }
 }

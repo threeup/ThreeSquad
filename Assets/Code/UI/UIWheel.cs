@@ -9,6 +9,7 @@ public class UIWheel : MonoBehaviour {
     public GeneralMachine machine;
 
     public GameObject container;
+    public Rect containerRect;
     public List<GameObject> buttons;
     public List<UIProperties> contents;
     public List<UIWheelSelection> selections;
@@ -52,8 +53,6 @@ public class UIWheel : MonoBehaviour {
         machine.AddUpdateListener(UpdateBusy);
 
         
-
-
         lastScreenFactor = UIMgr.Instance.CalculateScreenFactor();
         for(int i=0; i< buttons.Count; ++i)
         {
@@ -65,6 +64,7 @@ public class UIWheel : MonoBehaviour {
             {
                 selection.SetPrev(selections[i-1]);
             }
+            selection.SetSelected(false);
         }
 
         selections[0].SetPrev(selections[buttons.Count-1]);
@@ -74,6 +74,8 @@ public class UIWheel : MonoBehaviour {
         centerPos = selected.position;
         buttonRadius = (selected.transform as RectTransform).rect.height/2f * selected.transform.localScale.y;
         Utilities.ApplyScale(container, lastScreenFactor);
+        FinishResize();
+        
 
         machine.SetState(GeneralState.READY);
         isInit = true;
@@ -107,8 +109,21 @@ public class UIWheel : MonoBehaviour {
 
             Utilities.ReverseScale(container, lastScreenFactor);
             Utilities.ApplyScale(container, nextScreenFactor);
+            containerRect = (container.transform as RectTransform).rect;
+            FinishResize();
             lastScreenFactor = nextScreenFactor;
         }
+    }
+
+    public void FinishResize()
+    {
+        Transform trans = container.transform;
+        RectTransform recttrans = trans as RectTransform;
+        containerRect.width = recttrans.rect.width;
+        containerRect.height = recttrans.rect.height;
+        containerRect.x = trans.position.x - containerRect.width/2f;
+        containerRect.y = trans.position.y - containerRect.height/2f;
+        
     }
 
     public void Update()
@@ -256,6 +271,10 @@ public class UIWheel : MonoBehaviour {
     {
         return machine.IsState(GeneralState.READY);
     }
+    public bool IsActive()
+    {
+        return machine.IsState(GeneralState.ACTIVE);
+    }
     public bool IsBusy()
     {
         return machine.IsState(GeneralState.BUSY);
@@ -283,6 +302,10 @@ public class UIWheel : MonoBehaviour {
                 {
                     selections[i].SetUIProp(contents[i]);
                 }
+                else
+                {
+                    selections[i].ClearUIProp();   
+                }
             }
         }
     }
@@ -290,5 +313,15 @@ public class UIWheel : MonoBehaviour {
     public int GetSelectedUID()
     {
         return selected.prop.uid;
+    }
+
+    public int GetSelectedTypeVal()
+    {
+        return selected.prop.typeval;
+    }
+
+    public bool InBounds(Vector2 pos)
+    {
+        return containerRect.Contains(pos);
     }
 }

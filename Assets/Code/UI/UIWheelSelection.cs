@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class UIWheelSelection : MonoBehaviour {
     public GameObject go;
-    public Button button;
+    public Image image;
     public Text textObj;
     public int index;
 
@@ -28,7 +28,7 @@ public class UIWheelSelection : MonoBehaviour {
     public void Init(GameObject go, int index)
     {
         this.go = go;
-        this.button = go.GetComponent<Button>() as Button;
+        this.image = go.GetComponent<Image>() as Image;
         this.index = index;
         Vector3 pos = go.transform.position;
         this.position = new Vector2(pos.x, pos.y);
@@ -87,11 +87,18 @@ public class UIWheelSelection : MonoBehaviour {
     public void SetSelected(bool val)
     {
         isSelected = val;
+        image.color = isSelected ? Color.white : Color.gray;
     }
 
     public void SetUIProp(UIProperties prop)
     {
         this.prop = prop;
         textObj.text = prop.text;
+        
+    }
+
+    public void ClearUIProp()
+    {
+        textObj.text = "-";
     }
 }

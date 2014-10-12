@@ -17,30 +17,11 @@ public enum MakerMode
     BLOCK,
     COMMAND,
 }
-public enum BlockType
-{
-    CURSOR,
-    SPAWN,
-    ROCK,
-    WOOD,
-    PAPER,
-}
-
-public enum CommandType
-{
-    SHOOT,
-    WAIT,
-    FORWARD,
-    ROTATELEFT,
-    ROTATERIGHT,
-    STRAFELEFT,
-    STRAFERIGHT,
-}
 
 [System.Serializable]
 public class MakerMachine : StateMachine<MakerState>
 {
-}
+}   
 
 public class Maker : MonoBehaviour {
 
@@ -53,12 +34,18 @@ public class Maker : MonoBehaviour {
     public BlockType blockType;
     public CommandType commandType;
 
+    public Entity cursor;
+    public BlockProperties cursorProp;
+    private bool cursorMaterialDirty = true;
+
     public UIWheel wheel;
     private bool wheelDirty;
     private List<UIProperties> uiprops;
 
     public User user;
 
+    private Vector3 centerPoint;
+    private Vector3 offsetPoint;
 
     void Start()
     {
@@ -68,6 +55,8 @@ public class Maker : MonoBehaviour {
         }
         Instance = this;
         uiprops = new List<UIProperties>();
+        centerPoint = new Vector3(0.5f, 0.5f, 0f);
+        offsetPoint = new Vector3(0f, 0f, 0f);
     }
 
 
@@ -83,6 +72,7 @@ public class Maker : MonoBehaviour {
 		machine.AddChangeListener(OnChange);
         
         wheelDirty = true;
+        cursorProp = Vars.Instance.blockDict[BlockType.CURSOR];
         machine.SetState(MakerState.READY);
     }
     
@@ -119,20 +109,63 @@ public class Maker : MonoBehaviour {
 
     public void SelectType(int typ)
     {
+
         switch(mode)
         {
             case MakerMode.BLOCK:
-                blockType = (BlockType)typ;
+                BlockType shouldBlockType = (BlockType)typ;
+                if (shouldBlockType != blockType)
+                {
+                    blockType = shouldBlockType;
+                    cursorMaterialDirty = true;
+                }
                 break;
             case MakerMode.COMMAND:
-                commandType = (CommandType)typ;
+                CommandType shouldCommandType = (CommandType)typ;
+                if (shouldCommandType != commandType)
+                {
+                    commandType = shouldCommandType;
+                    cursorMaterialDirty = true;
+                }
+                break;
+        }
+        
+    }
+
+    public void Click(Vector2 pos)
+    {
+        switch(mode)
+        {
+            case MakerMode.BLOCK:
+                ClickBlock(pos);
                 break;
         }
     }
 
-    public void Place(Vector2 pos)
+    public void ClickBlock(Vector2 pos)
     {
+        CheckCursor();
+        if (ClickOnCursor(pos))
+        {
+            PlaceBlock();
+        }
+        else
+        {
+            offsetPoint.x = pos.x-centerPoint.x;
+            offsetPoint.y = pos.y-centerPoint.y;
+        }
+    }
+
+    public void PlaceBlock()
+    {
+        cursor.SetTransparent(false);
+        cursor.SetPhysics(Vars.Instance.blockDict[blockType]);
+        BlockMgr.Instance.AddBlock(cursor);
+        cursor = null;
+        CheckCursor();
+
         user.RemoveBlockInventory(wheel.GetSelectedUID());
+        PopulateWheel();
     }
 
 
@@ -170,5 +203,83 @@ public class Maker : MonoBehaviour {
         {
             PopulateWheel();
         }
+        if (wheel.IsActive())
+        {
+            SelectType(wheel.GetSelectedTypeVal());
+        }
+    }
+
+    public void UpdateInput(InputState inputState)
+    {
+        if (inputState == InputState.READY)
+        {
+            CheckCursor();
+            SetCursorMaterial();
+            AlignCursor();
+        }
+    }
+
+    public void CheckCursor()
+    {
+        if (cursor == null)
+        {
+            cursor = FactoryEntity.Instance.GetBlock(cursorProp);
+        }
+    }
+
+    public void SetCursorMaterial()
+    {
+        if (cursorMaterialDirty)
+        {
+            switch(mode)
+            {
+                case MakerMode.BLOCK:
+                    cursor.SetMaterial(Vars.Instance.blockDict[blockType].mat);
+                    cursor.SetTransparent(true);
+                    cursor.SetAlpha(0.5f);
+                    break;
+                case MakerMode.COMMAND:
+                    cursor.SetMaterial(Vars.Instance.commandDict[commandType].mat);
+                    break;
+            }
+            cursorMaterialDirty = false;
+        }
+    }
+
+    public void AlignCursor()
+    {
+        CameraMgr cameraMgr = CameraMgr.Instance; 
+        Vector3 clickPoint = centerPoint+offsetPoint;
+        Vector2 center = Camera.main.ViewportToScreenPoint(clickPoint);
+        Ray ray = cameraMgr.camera.ScreenPointToRay(center);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 100))
+        {
+            Debug.DrawLine(ray.origin, hit.point);
+            Vector3 cursorPoint = hit.point;
+            cursorPoint.x = Mathf.Round(cursorPoint.x/1f)*1f;
+            cursorPoint.z = Mathf.Round(cursorPoint.z/1f)*1f;
+            cursorPoint.y = 1f;
+            cursor.transform.position = cursorPoint;
+        }
+
+        
+    }
+
+    public bool ClickOnCursor(Vector2 clickPoint)
+    {
+        CameraMgr cameraMgr = CameraMgr.Instance; 
+        Vector2 center = Camera.main.ViewportToScreenPoint(clickPoint);
+        Ray ray = cameraMgr.camera.ScreenPointToRay(center);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 100))
+        {
+            Debug.DrawLine(ray.origin, hit.point,Color.blue,3f);
+            if (hit.collider.gameObject == cursor.gameObject)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

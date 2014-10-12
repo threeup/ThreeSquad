@@ -132,7 +132,6 @@ public class CameraMgr : MonoBehaviour {
     {
         if (CanMove())
         {
-            Debug.Log("move"+rel);
             destination.x = center.x - 10f*(rel.x);
             destination.y = center.y - 10f*(rel.y);
             machine.SetState(CameraState.BUSY);
