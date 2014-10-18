@@ -621,6 +621,7 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
+  isInit: 0
   buttons:
   - {fileID: 2041856101}
   - {fileID: 477620198}
@@ -631,7 +632,6 @@ MonoBehaviour:
   contents: []
   selections: []
   selected: {fileID: 0}
-  isInit: 0
 --- !u!224 &277300426
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1414,7 +1414,8 @@ MonoBehaviour:
       idx: 0
     stateList: []
     isInitialized: 0
-  uiWheel: {fileID: 277300425}
+  entityList:
+  - {fileID: 277300425}
   screenSize: {x: 0, y: 0}
   screenSizeRef: {x: 480, y: 800}
   screenFactor: {x: 0, y: 0}

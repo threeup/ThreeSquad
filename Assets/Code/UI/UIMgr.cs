@@ -23,9 +23,10 @@ public class UIMgr : MonoBehaviour {
     public static UIMgr Instance;
     public GeneralMachine machine;
 
-    public UIWheel uiWheel; //wiredup
+    public UIEntity[] entityList;
 
     private bool consumeInput = false;
+    private Rect containerRect;
     public Vector2 screenSize;
     public Vector2 screenSizeRef = new Vector2(480, 800);
     public Vector2 screenFactor;
@@ -49,7 +50,10 @@ public class UIMgr : MonoBehaviour {
         machine.AddEnterListener(OnActive);
         machine.AddEnterListener(OnBusy);
         CalculateScreenFactor();
-        uiWheel.Initialize();
+        for(int i=0; i<entityList.Length; ++i)
+        {
+            entityList[i].Initialize();
+        }
         
         machine.SetState(GeneralState.READY);
     }
@@ -95,12 +99,35 @@ public class UIMgr : MonoBehaviour {
 
     public bool IsConsumeInput()
     {
-        return consumeInput || uiWheel.IsConsumeInput();
+        if (consumeInput)
+        {
+            return true;
+        }
+        for(int i=0; i<entityList.Length; ++i)
+        {
+            if (entityList[i].IsConsumeInput())
+            {
+                return true;
+            }
+        }
+        return false;
+
     }
 
     public bool InBounds(Vector2 pos)
     {
-        return uiWheel.InBounds(pos);
+        if (containerRect.Contains(pos))
+        {
+            return true;
+        }
+        for(int i=0; i<entityList.Length; ++i)
+        {
+            if (entityList[i].InBounds(pos))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public bool HandleClick(Vector2 pos)

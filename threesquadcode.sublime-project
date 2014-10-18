@@ -1,11 +1,11 @@
 {
-	
 	"folders":
 	[
 		{
 			"follow_symlinks": true,
 			"path": "Assets\\Code",
 			"file_exclude_patterns": ["*.meta"]
-		},
+		}
 	]
 }
+			

@@ -3,13 +3,10 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class UIWheel : MonoBehaviour {
+public class UIWheel : UIEntity {
 
     public static UIWheel Instance;
-    public GeneralMachine machine;
 
-    public GameObject container;
-    public Rect containerRect;
     public List<GameObject> buttons;
     public List<UIProperties> contents;
     public List<UIWheelSelection> selections;
@@ -17,7 +14,6 @@ public class UIWheel : MonoBehaviour {
 
     private Vector2 anchorPos;
     private Vector2 centerPos;
-    private bool consumeInput = false;
     private bool hasClickDown = false;
 
     private float threshold = 40f;
@@ -28,10 +24,8 @@ public class UIWheel : MonoBehaviour {
     private DeviceOrientation lastDeviceOrientation = DeviceOrientation.Unknown;
     private Vector3 lastScreenFactor = Vector3.one;
 
-    public bool isInit = false;
-
     
-    void Start()
+    public override void Start()
     {
         if (Instance != null)
         {
@@ -42,17 +36,8 @@ public class UIWheel : MonoBehaviour {
     }
 
 
-    public void Initialize()
+    public override void Initialize()
     {
-        machine = new GeneralMachine();
-        machine.Initialize(this);
-        machine.AddEnterListener(OnNotReady);
-        machine.AddEnterListener(OnReady);
-        machine.AddEnterListener(OnActive);
-        machine.AddEnterListener(OnBusy);
-        machine.AddUpdateListener(UpdateBusy);
-
-        
         lastScreenFactor = UIMgr.Instance.CalculateScreenFactor();
         for(int i=0; i< buttons.Count; ++i)
         {
@@ -76,9 +61,8 @@ public class UIWheel : MonoBehaviour {
         Utilities.ApplyScale(container, lastScreenFactor);
         FinishResize();
         
+        base.Initialize();
 
-        machine.SetState(GeneralState.READY);
-        isInit = true;
     }
 
     void CheckForOrientation() 
@@ -126,38 +110,16 @@ public class UIWheel : MonoBehaviour {
         
     }
 
-    public void Update()
+    public override void Update()
     {
         if (isInit)
         {
             CheckForChange();
-            machine.MachineUpdate(Time.deltaTime);
         }
+        base.Update();
     }
 
-
-    public void OnNotReady(object owner)
-    {
-
-    }
-
-
-    public void OnReady(object owner)
-    {
-        
-    }
-
-    public void OnActive(object owner)
-    {
-
-    }
-
-    public void OnBusy(object owner)
-    {
-
-    }
-
-    public void UpdateBusy(float deltaTime)
+    public override void UpdateBusy(float deltaTime)
     {
         lockTimer -= deltaTime;
         if (lockTimer < 0.0f)
@@ -266,25 +228,6 @@ public class UIWheel : MonoBehaviour {
         selected.SetSelected(true);
     }
 
-
-    public bool IsReady()
-    {
-        return machine.IsState(GeneralState.READY);
-    }
-    public bool IsActive()
-    {
-        return machine.IsState(GeneralState.ACTIVE);
-    }
-    public bool IsBusy()
-    {
-        return machine.IsState(GeneralState.BUSY);
-    }
-
-    public bool IsConsumeInput()
-    {
-        return consumeInput;
-    }
-
     public void SetContents(List<UIProperties> uiprops)
     {
         contents.Clear();
@@ -320,8 +263,4 @@ public class UIWheel : MonoBehaviour {
         return selected.prop.typeval;
     }
 
-    public bool InBounds(Vector2 pos)
-    {
-        return containerRect.Contains(pos);
-    }
 }

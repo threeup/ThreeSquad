@@ -163,9 +163,12 @@ public class Maker : MonoBehaviour {
         BlockMgr.Instance.AddBlock(cursor);
         cursor = null;
         CheckCursor();
-
-        user.RemoveBlockInventory(wheel.GetSelectedUID());
-        PopulateWheel();
+        
+        if (wheel != null)
+        {
+            user.RemoveBlockInventory(wheel.GetSelectedUID());
+            PopulateWheel();
+        }
     }
 
 
@@ -199,11 +202,11 @@ public class Maker : MonoBehaviour {
 
     public void Update()
     {
-        if (wheelDirty && IsReady() && wheel.IsReady())
+        if (wheel != null && wheelDirty && IsReady() && wheel.IsReady())
         {
             PopulateWheel();
         }
-        if (wheel.IsActive())
+        if (wheel != null && wheel.IsActive())
         {
             SelectType(wheel.GetSelectedTypeVal());
         }
